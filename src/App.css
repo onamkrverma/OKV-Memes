@@ -1,38 +1,250 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    overflow-y: scroll;
+}
+/* scrollbar */
+::-webkit-scrollbar{
+    width: 7px;
+}
+::-webkit-scrollbar-track{
+    background: #f9f9f9;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: rgb(48, 47, 47);
+}
+::-webkit-scrollbar-thumb:hover{
+    
+    background-color: #5e5e5e;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+/* navBar  */
+.navBar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 0 2px 1px grey;
+    margin-bottom: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navLinks li {
+    margin: 0px 15px;
+    list-style: none;
+}
+.navLinks li a{
+    text-decoration: none;
+    color: black;
+}
+.searchBox{
+    width: 50%;
+    position: relative;
+}
+.searchBox form{
+    display: flex;
+    justify-content: center;
+    
+}
+.searchBox input{
+    width: 100%;
+    font-size: 1rem;
+    padding: 5px;
+    outline: none;
+}
+.searchBox span{
+    position: absolute;
+    right: 10%;
+    top: 7px;
+    cursor: pointer;
+}
+.submitBtn i{
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 6px 15px;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* home section */
+
+.heroSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: lightblue;
+    margin-top: 3px;
+    position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.heroContent {
+    width: 40%;
+}
+.heroImage{
+    z-index: 2;
+}
+.circle{
+    width: 40%;
+    height: -webkit-fill-available;
+    background: lightcoral;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    border-radius: 200px 0 0px 200px
+}
+
+/* memes section */
+.memesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 15px;
+    background: #f9f9f9;
+}
+.heading{
+    padding: 5px;
+    border-bottom: 2px solid #8cb6c3;
+}
+
+.memesInner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.videoBox {
+    /* border: 2px solid; */
+    width: 274px;
+    margin: 10px;
+    height: 225px;
+    text-align: center;
+    /* box-shadow: 0 0 5px 0px #c9c9c9; */
+    cursor: pointer;
+    position: relative;
+}
+.videoBox video{
+    width: 100%;
+}
+.videoBox p{
+    padding: 10px;
+}
+.playIcon{
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.playIcon i{
+    font-size: 1.2rem;
+    color: white;
+    background: #00000080;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* memesDetails section */
+.detailsContainer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #f9f9f9;
+    padding: 1rem ;
+    flex-wrap: wrap;
+
+}
+.videoContainer {
+    width: 640px;
+    height: fit-content;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 0 5px 0px #c9c9c9;
+    padding-bottom: 7px;
+}
+.otherContent {
+    width: 25%;
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.otherContent .memesContainer{
+    margin-top: 0;
+}
+
+
+.downloadBtn {
+    border: none;
+    padding: 6px 10px;
+    background: #048bce;
+    color: white;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+    /* font-size: 1rem; */
+}
+
+.downloadBtn i {
+    margin-right: 5px;
+}
+
+.downloadBtn:hover {
+    background-color: #0b72a5;
+}
+
+.offline{
+    text-align: center;
+}
+.offline img{
+    width: 400px;
+}
+
+
+/* Search page */
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.results .videoBox{
+    width: 350px;
+    height: 250px;
+}
+.results .videoBox video{
+    height: auto;
+}
+
+.notFound {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.notFound img{
+    width: 400px;
 }

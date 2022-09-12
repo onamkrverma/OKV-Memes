@@ -1,0 +1,73 @@
+
+@media (max-width:426px){
+    
+    .heroImage{
+        width: 50%;
+    }
+    .heroImage img{
+        width: 100%;
+    }
+    .heroContent {
+        width: 70%;
+        margin-left: 5px;
+        z-index: 2;
+    }
+    .heroContent h1{
+        font-size: 1.5rem;
+    }
+
+    .videoBox, .results .videoBox{
+        width: 100%;
+        height: auto;
+        margin: 5px 0;
+    }
+    .videoBox video{
+        height: auto;
+    }
+    .playIcon {
+        top: 30%;
+    }
+    .memesContainer h3{
+        font-size: 1rem;
+    }
+
+    /* memesDetails page */
+    .detailsContainer{
+        padding: 0;
+    }
+    .videoContainer{
+        width: 100%;
+        margin: 0;
+    }
+    .videoContainer video{
+        width: 100%;
+        height: auto;
+    }
+    .otherContent{
+        overflow: hidden;
+        margin-top: 10px;
+        width: 100%;
+        height: auto;
+    }
+
+    .searchBox span {
+        display: none;
+    }
+    .notFound img{
+        width: 80%;
+    }
+}
+
+
+/* for tablet view */
+@media ((min-width:427px) and (max-width:769px)){
+    .otherContent{
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+    }
+
+    .searchBox span{
+        right: 16%;
+    }
+}
