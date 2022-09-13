@@ -1,8 +1,10 @@
 import React,{useRef}  from 'react'
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 
 
 const NavBar = () => {
+  const [isMenuActive, setIsMenuActive] = useState(false)
   let navigate = useNavigate();
   
 
@@ -20,25 +22,34 @@ const NavBar = () => {
     refText.current.value = ''
   }
 
+  const activeMenue =()=>{
+    setIsMenuActive(!isMenuActive)
+  }
 
   return (
     <nav >
-      <div className='navBar'>
+      <div className='navBar' >
         <div className="logo">
-          OKV-Memes
+          <img src="../image/mainIcon.png" alt="icon" />
+          <h1>Okv-Memes</h1>
         </div>
-        <div className="navLinks">
+        <div className="navLinks" style={{display: isMenuActive?"flex":''}}>
           <ul >
             <li><Link to="/">Home</Link></li>
 
           </ul>
         </div>
-        <div className="searchBox">
-          <form  onSubmit={handleSubmit} >
-            <input type="text" placeholder='Search' ref={refText} name='search' required autoComplete='off' /> 
+        <div className="searchBox" style={{display: isMenuActive?"block":''}}>
+          <form  onSubmit={handleSubmit} autoComplete="off">
+            <input type="text" placeholder='Search...' ref={refText} name='search' autoComplete='off' required/> 
             <span onClick={clearField} >X</span>
             <button type='submit' className='submitBtn' title='submit'><i className="fa-solid fa-magnifying-glass"></i></button>
           </form>
+        </div>
+        <div className= {`menuBar ${isMenuActive?"menuActive":""}`} onClick={activeMenue}>
+          <div className="line line1"></div>
+          <div className="line line2"></div>
+          <div className="line line3"></div>
         </div>
       </div>
     </nav>

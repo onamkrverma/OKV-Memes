@@ -1,73 +1,127 @@
-
-@media (max-width:426px){
-    
-    .heroImage{
-        width: 50%;
+@media (max-width:426px) {
+    .navBar {
+        flex-direction: column;
     }
-    .heroImage img{
+
+    .logo img {
+        width: 35px;
+    }
+
+    .navLinks,
+    .searchBox {
+        display: none;
+        margin: 10px 0;
+    }
+
+    .navLinks li {
+        margin: 0;
+    }
+
+    .searchBox {
         width: 100%;
     }
+
+    .searchBox input {
+        width: 65px;
+        transition: width 0.4s ease-in-out;
+        border: none;
+        border-bottom: 2px solid #6d909c;
+    }
+
+    .searchBox input:focus {
+        width: 100%;
+    }
+
+    .searchBox span {
+        display: none;
+    }
+
+    .submitBtn {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid #6d909c;
+    }
+
+    .menuBar {
+        display: block;
+    }
+
+
+    .heroImage {
+        width: 50%;
+    }
+
+    .heroImage img {
+        width: 100%;
+    }
+
     .heroContent {
         width: 70%;
         margin-left: 5px;
         z-index: 2;
     }
-    .heroContent h1{
+
+    .heroContent h1 {
         font-size: 1.5rem;
     }
 
-    .videoBox, .results .videoBox{
+    .videoBox,
+    .results .videoBox {
         width: 100%;
         height: auto;
         margin: 5px 0;
     }
-    .videoBox video{
+
+    .videoBox video {
         height: auto;
     }
+
     .playIcon {
         top: 30%;
     }
-    .memesContainer h3{
+
+    .memesContainer h3 {
         font-size: 1rem;
     }
 
     /* memesDetails page */
-    .detailsContainer{
+    .detailsContainer {
         padding: 0;
     }
-    .videoContainer{
+
+    .videoContainer {
         width: 100%;
         margin: 0;
     }
-    .videoContainer video{
+
+    .videoContainer video {
         width: 100%;
         height: auto;
     }
-    .otherContent{
+
+    .otherContent {
         overflow: hidden;
         margin-top: 10px;
         width: 100%;
         height: auto;
     }
 
-    .searchBox span {
-        display: none;
-    }
-    .notFound img{
+
+    .notFound img {
         width: 80%;
     }
 }
 
 
 /* for tablet view */
-@media ((min-width:427px) and (max-width:769px)){
-    .otherContent{
+@media ((min-width:427px) and (max-width:769px)) {
+    .otherContent {
         width: 100%;
         overflow: hidden;
         height: auto;
     }
 
-    .searchBox span{
+    .searchBox span {
         right: 16%;
     }
 }
