@@ -9,7 +9,7 @@ const Home = () => {
       <div className='container'>
         <div className="heroSection">
           <div className="heroContent">
-            <h1>Make video more engaging</h1>
+            <h1>Make Video More Engaging</h1>
             <p>Adding memes to your video can increase your video audience retention</p>
             
           </div>

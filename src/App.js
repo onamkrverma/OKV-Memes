@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import MemesDetails from './components/MemesDetails';
 import Search from './components/Search';
+import PageNotFound from './components/PageNotFound';
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
     <Route path="/" element={<Home/>}/>
     <Route path="/memesDetails/:id" element={<MemesDetails/>}/>
     <Route path="/search/:value" element={<Search/>}/>
+    <Route path='*' element={<PageNotFound/>}/>
     
     
     </Routes>

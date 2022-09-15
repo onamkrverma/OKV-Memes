@@ -92,6 +92,10 @@
     .videoContainer {
         width: 100%;
         margin: 0;
+        position: sticky;
+        top: 0;
+        z-index: 6;
+        background: white;
     }
 
     .videoContainer video {
@@ -107,7 +111,7 @@
     }
 
 
-    .notFound img {
+    .notFound img,.pageNotFound img {
         width: 80%;
     }
 }
@@ -117,7 +121,14 @@
 @media ((min-width:427px) and (max-width:769px)) {
     .otherContent {
         width: 100%;
-        overflow: hidden;
+        overflow: scroll;
+        height: 300px;
+    }
+    .videoBox{
+        width: 230px;
+        height: 212px;
+    }
+    .videoBox .videoBox{
         height: auto;
     }
 

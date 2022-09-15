@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import notFound from '../assets/notFound.png'
+import notFound from '../assets/notFound.svg'
 
 const Search = () => {
   const [memesData, setMemesData] = useState([]);
@@ -8,7 +8,7 @@ const Search = () => {
   let navigate = useNavigate();
   const { state } = useLocation();
   const { searchValue } = state
-  console.log(searchValue)
+  // console.log(searchValue)
 
   const getData = async () => {
     const response = await fetch('https://api.npoint.io/a62c3019efce6bb23bcb', {
@@ -16,7 +16,7 @@ const Search = () => {
 
     })
     const data = await response.json();
-    setIsLoad(true)
+    
     setMemesData(data)
     setIsLoad(false)
     // console.log(data)
@@ -29,7 +29,7 @@ const Search = () => {
   const filterData = memesData.filter((value) => {
     return value.title.toLowerCase().includes(searchValue.toLowerCase())
   })
-  console.log(filterData)
+  // console.log(filterData)
 
   const redirectNextPage = (id, title, prevLink, downloadLink) => {
     navigate(`/memesDetails/${id}`, {
@@ -44,7 +44,7 @@ const Search = () => {
         <div className="loading" style={{display:isLoad?'flex':'none'}}>
           <img src="../image/colorfill.gif" alt="loading" />
         </div>
-        {filterData.length ?<div className="results">
+        <div className="results">
         {filterData.map((data) => {
           return (
             <div className="videoBox" key={data.id} onClick={() => redirectNextPage(data.id, data.title, data.prevLink, data.downloadLink)}>
@@ -56,11 +56,11 @@ const Search = () => {
         })
         }
         </div>
-        : <div className="notFound">
+        <div className="notFound" style={{display:filterData.length?"none":'flex'}}>
           <img src={notFound} alt="not found" />
           <h3>Ups!... no results found</h3>
         </div> 
-        }
+        
       </div>
     </>
   )
