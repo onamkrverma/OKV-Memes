@@ -111,7 +111,7 @@ body {
 
 .searchBox span {
     position: absolute;
-    right: 10%;
+    right: 11%;
     top: 7px;
     cursor: pointer;
 }
@@ -219,7 +219,7 @@ body {
     position: relative;
 }
 
-.videoBox video {
+.videoBox video, .videoBox img {
     width: 100%;
 }
 
@@ -274,6 +274,9 @@ body {
     margin-top: 0;
 }
 
+.btn{
+    position: relative;
+}
 
 .downloadBtn {
     border: none;
@@ -312,6 +315,29 @@ body {
 .shareBtn:hover {
     /* background: #b40909; */
     background: black;
+}
+
+.popUpBox{
+    display: none;
+    position: absolute;
+    z-index: 15;
+    background: black;
+    color: white;
+    left: 35%;
+    width: 170px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.popUpBox::after{
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent ;
+    border-left: 15px solid transparent ;
+    border-bottom: 15px solid black ;
+
 }
 
 /* Search page */

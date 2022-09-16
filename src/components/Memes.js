@@ -8,6 +8,7 @@ const Memes = (props) => {
   let navigate = useNavigate();
   const [memesData, setMemesData] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
+  const [isLoad, setIsLoad] = useState(true)
 
   const getData = async () => {
     try {
@@ -17,7 +18,8 @@ const Memes = (props) => {
       })
       const data = await response.json();
 
-      setMemesData(data)
+      setMemesData(data);
+      setIsLoad(false);
       // console.log(data)
     } catch (error) {
       // console.log('error',error);
@@ -31,9 +33,9 @@ const Memes = (props) => {
   const reverseMemesData = memesData.sort((a, b) => b.id - a.id)
 
 
-  const redirectNextPage = (id, title, prevLink, downloadLink) => {
+  const redirectNextPage = (id, title, prevLink) => {
     navigate(`/memesDetails/${id}`, {
-      state: { id, title, prevLink, downloadLink }
+      state: { id, title, prevLink }
     });
     // console.log(id)
   }
@@ -45,11 +47,17 @@ const Memes = (props) => {
   return (
     <div className='memesContainer'>
       <h3 className='heading' style={{ display: !errorMsg ? "block" : 'none' }}>{title ? title : 'Popular videos'}</h3>
+      <div className="loading" style={{display:isLoad?'flex':'none'}}>
+          <img src="../image/colorfill.gif" alt="loading" />
+      </div>
       <div className='memesInner' >
         {reverseMemesData.map((data) => {
           return (
-            <div className="videoBox" key={data.id} onClick={() => redirectNextPage(data.id, data.title, data.prevLink, data.downloadLink)}>
-              <video width='274' height='154' src={data.prevLink} disablePictureInPicture />
+            <div className="videoBox" key={data.id} onClick={() => redirectNextPage(data.id, data.title, data.prevLink)}>
+             {data.posterLink?<img width='274' height='154' src={data.posterLink} alt="poster" loading="lazy"/>
+             :
+             <video width='274' height='154' src={data.prevLink} disablePictureInPicture /> 
+             } 
               <span className='playIcon'><i className="fa-solid fa-play"></i></span>
               <p>{data.title}</p>
             </div>)

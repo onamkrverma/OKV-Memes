@@ -17,9 +17,9 @@ const NavBar = () => {
 
     
   }
-  const refText = useRef('')
+  const refText = useRef(null)
   const clearField = ()=>{
-    refText.current.value = ''
+    refText.current.value = null
   }
 
   const activeMenue =()=>{

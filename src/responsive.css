@@ -72,7 +72,7 @@
         margin: 5px 0;
     }
 
-    .videoBox video {
+    .videoBox video, .videoBox img {
         height: auto;
     }
 
@@ -98,7 +98,7 @@
         background: white;
     }
 
-    .videoContainer video {
+    .videoContainer video{
         width: 100%;
         height: auto;
     }
@@ -128,9 +128,7 @@
         width: 230px;
         height: 212px;
     }
-    .videoBox .videoBox{
-        height: auto;
-    }
+
 
     .searchBox span {
         right: 16%;

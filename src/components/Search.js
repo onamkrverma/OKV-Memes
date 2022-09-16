@@ -16,7 +16,7 @@ const Search = () => {
 
     })
     const data = await response.json();
-    
+
     setMemesData(data)
     setIsLoad(false)
     // console.log(data)
@@ -26,14 +26,15 @@ const Search = () => {
     getData();
   }, [])
 
+
   const filterData = memesData.filter((value) => {
     return value.title.toLowerCase().includes(searchValue.toLowerCase())
   })
   // console.log(filterData)
 
-  const redirectNextPage = (id, title, prevLink, downloadLink) => {
+  const redirectNextPage = (id, title, prevLink) => {
     navigate(`/memesDetails/${id}`, {
-      state: { id, title, prevLink, downloadLink }
+      state: { id, title, prevLink }
     });
     // console.log(id)
   }
@@ -41,26 +42,34 @@ const Search = () => {
   return (
     <>
       <div className="searchResults">
-        <div className="loading" style={{display:isLoad?'flex':'none'}}>
+        <div className="loading" style={{ display: isLoad ? 'flex' : 'none' }}>
           <img src="../image/colorfill.gif" alt="loading" />
         </div>
         <div className="results">
-        {filterData.map((data) => {
-          return (
-            <div className="videoBox" key={data.id} onClick={() => redirectNextPage(data.id, data.title, data.prevLink, data.downloadLink)}>
-              <video width='274' height='154' src={data.prevLink} disablePictureInPicture />
-              <span className='playIcon'><i className="fa-solid fa-play"></i></span>
-              <p>{data.title}</p>
-            </div>
-          )
-        })
-        }
+
+          {filterData.length > 0 ?
+            filterData.map((data) => {
+              return (
+                <div className="videoBox" key={data.id} onClick={() => redirectNextPage(data.id, data.title, data.prevLink)}>
+                  {data.posterLink ? <img width='274' height='154' src={data.posterLink} alt="poster" loading='lazy' />
+                    :
+                    <video width='274' height='154' src={data.prevLink} disablePictureInPicture />
+                  }
+                  <span className='playIcon'><i className="fa-solid fa-play"></i></span>
+                  <p>{data.title}</p>
+                </div>
+              )
+            })
+            : (<div className="notFound">
+              <img src={notFound} alt="not found" />
+              <h3>Ups!... no results found</h3>
+            </div>)
+
+          }
+
+
+
         </div>
-        <div className="notFound" style={{display:filterData.length?"none":'flex'}}>
-          <img src={notFound} alt="not found" />
-          <h3>Ups!... no results found</h3>
-        </div> 
-        
       </div>
     </>
   )
