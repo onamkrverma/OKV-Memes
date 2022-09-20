@@ -17,7 +17,7 @@ function App() {
     <NavBar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
-    <Route path="/memesDetails/:id" element={<MemesDetails/>}/>
+    <Route path="/watch/:id" element={<MemesDetails/>}/>
     <Route path="/search/:value" element={<Search/>}/>
     <Route path='*' element={<PageNotFound/>}/>
     

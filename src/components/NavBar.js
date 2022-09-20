@@ -30,12 +30,12 @@ const NavBar = () => {
     <nav >
       <div className='navBar' >
         <div className="logo">
-          <img src="../image/mainIcon.png" alt="icon" />
-          <h1>Okv-Memes</h1>
+          <img src="../image/mainIcon.png" width='40' height='40' alt="icon" />
+          <Link to="/"><h1>Okv-Memes</h1></Link>
         </div>
         <div className="navLinks" style={{display: isMenuActive?"flex":''}}>
           <ul >
-            <li><Link to="/">Home</Link></li>
+            <li><Link to="/" >Home</Link></li>
 
           </ul>
         </div>

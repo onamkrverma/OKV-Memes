@@ -33,7 +33,7 @@ const Search = () => {
   // console.log(filterData)
 
   const redirectNextPage = (id, title, prevLink) => {
-    navigate(`/memesDetails/${id}`, {
+    navigate(`/watch/${id}`, {
       state: { id, title, prevLink }
     });
     // console.log(id)
@@ -51,12 +51,15 @@ const Search = () => {
             filterData.map((data) => {
               return (
                 <div className="videoBox" key={data.id} onClick={() => redirectNextPage(data.id, data.title, data.prevLink)}>
-                  {data.posterLink ? <img width='274' height='154' src={data.posterLink} alt="poster" loading='lazy' />
+                  {data.posterLink ? <img width='274' height='154' className='poster' src={data.posterLink} alt="poster" loading='lazy' />
                     :
-                    <video width='274' height='154' src={data.prevLink} disablePictureInPicture />
+                    <video className='poster' width='274' height='154' src={data.prevLink} disablePictureInPicture />
                   }
                   <span className='playIcon'><i className="fa-solid fa-play"></i></span>
-                  <p>{data.title}</p>
+                  <div className="videoShortDetails">
+                    <img className='userLogo' width='33' height='33' src="../logo192.png" alt="uploader" />
+                    <h5>{data.title}</h5>
+                  </div>
                 </div>
               )
             })

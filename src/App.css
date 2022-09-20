@@ -14,12 +14,12 @@ nav{
 }
 
 body {
-    overflow-y: scroll;
+    background: #f9f9f9;
 }
 
 /* scrollbar */
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -53,12 +53,13 @@ body {
     align-items: center;
     justify-content: center;
 }
-.logo img{
-    width: 40px;
-}
 
+.logo a{
+    text-decoration: none;
+}
 .logo h1 {
-    font-family: 'Lobster', cursive;
+    color: black;
+    font-family: 'Lobster';
     margin-left: 5px;
     font-weight: 400;
 }
@@ -219,13 +220,10 @@ body {
     position: relative;
 }
 
-.videoBox video, .videoBox img {
+.videoBox video, .videoBox .poster {
     width: 100%;
 }
 
-.videoBox p {
-    padding: 10px;
-}
 
 .playIcon {
     position: absolute;
@@ -242,6 +240,22 @@ body {
     padding: 10px;
     border-radius: 10px;
 }
+
+.videoShortDetails {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+.videoShortDetails .userLogo {
+    border-radius: 20px;
+    border: 2px dashed #548696;
+}
+.videoShortDetails h5{
+    line-height: 1.2rem;
+    margin-left: 10px;
+    text-align: start;
+}
+
 
 /* memesDetails section */
 .detailsContainer {
@@ -260,6 +274,13 @@ body {
     text-align: center;
     box-shadow: 0 0 5px 0px #c9c9c9;
     padding-bottom: 7px;
+}
+
+.titleLogoBox{
+    margin: 5px;
+}
+.titleLogoBox h5{
+    font-size: 1rem;
 }
 
 .otherContent {
@@ -359,7 +380,7 @@ body {
     height: 250px;
 }
 
-.results .videoBox video {
+.results .videoBox .poster {
     height: auto;
 }
 

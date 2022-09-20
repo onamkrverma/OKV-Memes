@@ -36,7 +36,10 @@ const MemesDetails = () => {
       <div className='detailsContainer'>
         {state ? <div className="videoContainer">
           <video width='640' height='360' src={prevLink} controls disablePictureInPicture controlsList='noplaybackrate' />
-          <p>{title}</p>
+          <div className="videoShortDetails titleLogoBox">
+              <img className='userLogo' src="../logo192.png" width='33' height='33' alt="uploader" />
+              <h5>{title}</h5>
+            </div>
           <div className="btn">
             <button className='downloadBtn' type='button' onClick={popUpClick}><i className="fa-solid fa-download"></i>Download</button>
             <button type='button' onClick={shareClick} className="shareBtn"><i className="fa-solid fa-share"></i>Share</button>

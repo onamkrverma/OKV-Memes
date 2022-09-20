@@ -14,7 +14,7 @@ const Home = () => {
             
           </div>
           <div className="heroImage">
-            <img src="./image/poster.png" alt="poster img" style={{ display: 'block' }} />
+            <img src="./image/poster.png" width='384' heigth='372' alt="poster img" style={{ display: 'block' }} />
           </div>
           <div className="circle"></div>
 
