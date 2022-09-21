@@ -220,7 +220,7 @@ body {
     position: relative;
 }
 
-.videoBox video, .videoBox .poster {
+.videoBox .poster {
     width: 100%;
 }
 
@@ -377,12 +377,8 @@ body {
 
 .results .videoBox {
     width: 350px;
-    height: 250px;
 }
 
-.results .videoBox .poster {
-    height: auto;
-}
 
 /* Error section */
 .notFound {

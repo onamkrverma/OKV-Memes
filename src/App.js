@@ -10,9 +10,11 @@ import {
 import MemesDetails from './components/MemesDetails';
 import Search from './components/Search';
 import PageNotFound from './components/PageNotFound';
+import MemesState from './context/MemesState';
 function App() {
   return (
     <>
+    <MemesState>
     <BrowserRouter>
     <NavBar/>
     <Routes>
@@ -24,6 +26,7 @@ function App() {
     
     </Routes>
     </BrowserRouter>
+    </MemesState>
     </>
     
   );

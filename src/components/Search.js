@@ -1,36 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import notFound from '../assets/notFound.svg'
+import notFound from '../assets/notFound.svg';
+import MemesContext from '../context/MemesContext';
 
 const Search = () => {
-  const [memesData, setMemesData] = useState([]);
-  const [isLoad, setIsLoad] = useState(true)
+  const context = useContext(MemesContext);
+  const {memesData,isLoad} = context
   let navigate = useNavigate();
   const { state } = useLocation();
   const { searchValue } = state
   // console.log(searchValue)
 
-  const getData = async () => {
-    const response = await fetch('https://api.npoint.io/a62c3019efce6bb23bcb', {
-      method: 'GET',
-
-    })
-    const data = await response.json();
-
-    setMemesData(data)
-    setIsLoad(false)
-    // console.log(data)
-
-  }
-  useEffect(() => {
-    getData();
-  }, [])
-
 
   const filterData = memesData.filter((value) => {
     return value.title.toLowerCase().includes(searchValue.toLowerCase())
   })
-  // console.log(filterData)
+  console.log(filterData)
 
   const redirectNextPage = (id, title, prevLink) => {
     navigate(`/watch/${id}`, {
@@ -60,7 +45,9 @@ const Search = () => {
                     <img className='userLogo' width='33' height='33' src="../logo192.png" alt="uploader" />
                     <h5>{data.title}</h5>
                   </div>
+                  
                 </div>
+                
               )
             })
             : (<div className="notFound">

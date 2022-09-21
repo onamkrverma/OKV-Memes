@@ -1,35 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, {useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import loadErrorImg from '../assets/503 Error.svg'
+import loadErrorImg from '../assets/503 Error.svg';
+import MemesContext from '../context/MemesContext';
 
 const Memes = (props) => {
   const { title } = props
+  const context = useContext(MemesContext)
+  const {memesData,isLoad,errorMsg}= context
 
   let navigate = useNavigate();
-  const [memesData, setMemesData] = useState([])
-  const [errorMsg, setErrorMsg] = useState('')
-  const [isLoad, setIsLoad] = useState(true)
-
-  const getData = async () => {
-    try {
-      const response = await fetch('https://api.npoint.io/a62c3019efce6bb23bcb', {
-        method: 'GET',
-
-      })
-      const data = await response.json();
-
-      setMemesData(data);
-      setIsLoad(false);
-      // console.log(data)
-    } catch (error) {
-      // console.log('error',error);
-      setErrorMsg("Can't load data... Please Try Again")
-    }
-  }
-  useEffect(() => {
-    getData();
-  }, [])
-
   const reverseMemesData = memesData.sort((a, b) => b.id - a.id)
 
 
