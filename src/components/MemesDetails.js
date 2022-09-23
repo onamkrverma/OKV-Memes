@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import Memes from './Memes';
 import loadErrorImg from '../assets/503 Error.svg';
-
+import MemesContext from '../context/MemesContext';
 
 const MemesDetails = () => {
   const [isPopUp, setIsPopUp] = useState(false);
+  const context = useContext(MemesContext);
+  const {isDarkMode} = context;
   const { state } = useLocation();
-  const { title, prevLink } = state || {}
+  const { title, prevLink,} = state || {}
   // console.log(state)
 
   const shareData = {
@@ -34,7 +36,7 @@ const MemesDetails = () => {
   return (
     <>
       <div className='detailsContainer'>
-        {state ? <div className="videoContainer">
+        {state ? <div className={`videoContainer ${isDarkMode?"darkModeActive":""}`} >
           <video width='640' height='360' src={prevLink} controls disablePictureInPicture controlsList='noplaybackrate' />
           <div className="videoShortDetails titleLogoBox">
               <img className='userLogo' src="../logo192.png" width='33' height='33' alt="uploader" />
@@ -51,6 +53,7 @@ const MemesDetails = () => {
           <div className='loadError'>
             <img src={loadErrorImg} alt="Server Error" />
             <h3>Sorry! unable to load this video</h3>
+            <p>Direct access from url not allowed</p>
           </div>
         }
 

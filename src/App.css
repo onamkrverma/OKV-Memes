@@ -10,12 +10,10 @@ nav{
     z-index: 10;
     position: sticky;
     top: 0;
-    background: white;
+    
 }
 
-body {
-    background: #f9f9f9;
-}
+
 
 /* scrollbar */
 ::-webkit-scrollbar {
@@ -46,6 +44,7 @@ body {
     box-shadow: 0 0 2px 1px grey;
     margin-bottom: 5px;
     position: relative;
+    background: white;
 }
 
 .logo {
@@ -55,10 +54,10 @@ body {
 }
 
 .logo a{
+    color: inherit;
     text-decoration: none;
 }
-.logo h1 {
-    color: black;
+.logo h1 { 
     font-family: 'Lobster';
     margin-left: 5px;
     font-weight: 400;
@@ -81,7 +80,7 @@ body {
 
 .navLinks li a {
     text-decoration: none;
-    color: black;
+    color: inherit;
     border-bottom: 2px solid #6d909c;
     padding: 4px;
 }
@@ -105,22 +104,41 @@ body {
 
 .searchBox input {
     width: 100%;
+    height: 36px;
     font-size: 1rem;
-    padding: 5px;
+    padding: 2px 6px;
     outline: none;
+    background: transparent;
+    border: 1px solid #303030;
+    color: inherit;
 }
 
 .searchBox span {
     position: absolute;
     right: 11%;
-    top: 7px;
+    top: 25%;
+    font-size: 1.1rem;
     cursor: pointer;
+}
+.submitBtn{
+    border: 1px solid #303030;
+    color: inherit;
 }
 
 .submitBtn i {
     cursor: pointer;
     font-size: 1rem;
     padding: 6px 15px;
+}
+.darkModeBtn{
+    background: transparent;
+    color: inherit;
+    margin: auto;
+    border: none;
+    cursor: pointer;
+}
+.darkModeBtn i{
+    font-size: 1.5rem;
 }
 
 /* menuBar */
@@ -146,6 +164,9 @@ body {
 }
 .menuActive .line3{
     transform: rotate(-45deg) translate(0px, 3px);
+}
+.darkModeActive .line{
+    background: white;
 }
 
 
@@ -193,7 +214,7 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     padding-top: 15px;
-    background: #f9f9f9;
+    /* background: #f9f9f9; */
 }
 
 .heading {
@@ -227,18 +248,17 @@ body {
 
 .playIcon {
     position: absolute;
-    top: 25%;
     left: 0;
-    right: 0;
     z-index: 1;
+    margin: 2px;
 }
 
 .playIcon i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: white;
     background: #00000080;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .videoShortDetails {
@@ -261,7 +281,6 @@ body {
 .detailsContainer {
     display: flex;
     justify-content: space-around;
-    background-color: #f9f9f9;
     padding: 1rem;
     flex-wrap: wrap;
 
@@ -272,7 +291,7 @@ body {
     height: fit-content;
     margin: 10px;
     text-align: center;
-    box-shadow: 0 0 5px 0px #c9c9c9;
+   background-color: white;
     padding-bottom: 7px;
 }
 
@@ -376,7 +395,11 @@ body {
 }
 
 .results .videoBox {
-    width: 350px;
+    width: 355px;
+    height: 260px;
+}
+.results .videoBox .poster {
+    height: 75%;
 }
 
 
@@ -419,4 +442,11 @@ body {
 
 .reloadBtn i{
     margin-right: 5px;
+}
+
+
+/* dark mode */
+.darkModeActive{
+    background-color: #202124;
+    color: white;
 }

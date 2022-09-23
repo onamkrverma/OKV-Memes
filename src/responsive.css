@@ -9,7 +9,7 @@
     }
 
     .navLinks,
-    .searchBox {
+    .searchBox,.darkModeBtn {
         display: none;
         margin: 10px 0;
     }
@@ -77,9 +77,6 @@
         height: auto;
     }
 
-    .playIcon {
-        top: 30%;
-    }
     .videoShortDetails{
         margin: 5px;
 
@@ -101,7 +98,6 @@
         position: sticky;
         top: 0;
         z-index: 6;
-        background: white;
     }
 
     .videoContainer video{
@@ -127,7 +123,7 @@
 @media ((min-width:427px) and (max-width:769px)) {
     .otherContent {
         width: 100%;
-        overflow: scroll;
+        overflow-y: scroll;
         height: 300px;
     }
     .videoBox{
@@ -135,7 +131,9 @@
         height: 212px;
     }
 
-
+    .searchBox{
+        width: 45%;
+    }
     .searchBox span {
         right: 16%;
     }

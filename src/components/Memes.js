@@ -27,7 +27,7 @@ const Memes = (props) => {
     <div className='memesContainer'>
       <h3 className='heading' style={{ display: !errorMsg ? "block" : 'none' }}>{title ? title : 'Popular videos'}</h3>
       <div className="loading" style={{display:isLoad?'flex':'none'}}>
-          <img src="../image/colorfill.gif" alt="loading" />
+          <img src="../image/dualBall.svg" width='80' height='80' alt="loading" />
       </div>
       <div className='memesInner' >
         {reverseMemesData.map((data) => {

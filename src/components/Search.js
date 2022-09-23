@@ -15,7 +15,7 @@ const Search = () => {
   const filterData = memesData.filter((value) => {
     return value.title.toLowerCase().includes(searchValue.toLowerCase())
   })
-  console.log(filterData)
+  // console.log(filterData)
 
   const redirectNextPage = (id, title, prevLink) => {
     navigate(`/watch/${id}`, {
@@ -28,7 +28,7 @@ const Search = () => {
     <>
       <div className="searchResults">
         <div className="loading" style={{ display: isLoad ? 'flex' : 'none' }}>
-          <img src="../image/colorfill.gif" alt="loading" />
+          <img src="../image/dualBall.svg" width='80' height='80' alt="loading" />
         </div>
         <div className="results">
 
