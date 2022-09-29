@@ -9,7 +9,8 @@
     }
 
     .navLinks,
-    .searchBox,.darkModeBtn {
+    .searchBox,
+    .darkModeBtn {
         display: none;
         margin: 10px 0;
     }
@@ -77,11 +78,11 @@
         height: auto;
     }
 
-    .videoShortDetails{
+    .videoShortDetails {
         margin: 5px;
 
     }
-    
+
 
     .memesContainer h3 {
         font-size: 1rem;
@@ -100,7 +101,7 @@
         z-index: 6;
     }
 
-    .videoContainer video{
+    .videoContainer video {
         width: 100%;
         height: auto;
     }
@@ -113,10 +114,21 @@
     }
 
 
-    .notFound img,.pageNotFound img {
+    .notFound img,
+    .pageNotFound img {
         width: 80%;
     }
+
+    /* admin section */
+    .card {
+        width: 45%;
+    }
+
+    .addMemesBox {
+        width: 85%;
+    }
 }
+
 
 
 /* for tablet view */
@@ -126,14 +138,16 @@
         overflow-y: scroll;
         height: 300px;
     }
-    .videoBox{
+
+    .videoBox {
         width: 230px;
         height: 212px;
     }
 
-    .searchBox{
+    .searchBox {
         width: 45%;
     }
+
     .searchBox span {
         right: 16%;
     }

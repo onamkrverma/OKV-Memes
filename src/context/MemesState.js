@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MemesContext from "./MemesContext";
 
 const MemesState = (props) => {
-
+    const host = 'http://localhost:5000/api/memes'
     const getDarkModeValue = ()=>{
         return JSON.parse(localStorage.getItem('darkMode'))||false;
     }
@@ -10,10 +10,15 @@ const MemesState = (props) => {
     const [isLoad, setIsLoad] = useState(true);
     const [errorMsg, setErrorMsg] = useState('');
     const [isDarkMode, setIsDarkMode] = useState(getDarkModeValue());
+
+    // get all data
     const getData = async () => {
         try {
-            const response = await fetch('https://api.npoint.io/a62c3019efce6bb23bcb', {
+            const response = await fetch(`${host}/fetchallmemes`, {
                 method: 'GET',
+                headers:{
+                    'Content-Type': 'application/json'
+                }
 
             })
             const data = await response.json();
@@ -30,6 +35,69 @@ const MemesState = (props) => {
     useEffect(() => {
         getData();
     }, [])
+
+    // add data
+    const addMemes = async(title,description,previewUrl,posterUrl,tag)=>{
+        const response = await fetch(`${host}/addmemes`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                'auth-token':localStorage.getItem('token')
+            },
+            body: JSON.stringify({title,description,previewUrl,posterUrl,tag})
+        })
+        const newMemes = await response.json();
+        setMemesData(memesData.concat(newMemes));
+    }
+
+    // edit data 
+    const updateMemes = async(id,title,description,previewUrl,posterUrl,tag)=>{
+        const response = await fetch(`${host}/updatememes/${id}`, {
+            method: 'PUT',
+            headers:{
+                'Content-Type': 'application/json',
+                'auth-token':localStorage.getItem('token')
+            },
+            body: JSON.stringify({title,description,previewUrl,posterUrl,tag})
+
+        })
+        const data = await response.json();
+        console.log(data);
+
+        let updatedMemes = JSON.parse(JSON.stringify(memesData));
+        for(let index = 0; index<updatedMemes.length;index++){
+            let element = updatedMemes[index]
+            if(element._id=== id){
+                element.title = title;
+                element.description = description;
+                element.previewUrl = previewUrl;
+                element.posterposterUrl =posterUrl;
+                element.tag = tag;
+                break;
+            }
+        }
+        setMemesData(updatedMemes);
+    }
+
+    // delete data
+    const  deleteMemes = async(id)=>{
+        const response = await fetch(`${host}/deletememes/${id}`, {
+            method: 'DELETE',
+            headers:{
+                'Content-Type': 'application/json',
+                'auth-token':localStorage.getItem('token')
+            }
+
+        })
+        const data = await response.json();
+        console.log(data);
+        const remainingMemes = memesData.filter((memes)=>{
+            return memes._id !== id
+        })
+        setMemesData(remainingMemes);
+
+    }
+
 
     
     const modeToggle =()=>{
@@ -50,7 +118,7 @@ const MemesState = (props) => {
     }
 
     return (
-        <MemesContext.Provider value={{ memesData, isLoad, errorMsg, getData,isDarkMode,modeToggle }}>
+        <MemesContext.Provider value={{ memesData, isLoad, errorMsg, getData,isDarkMode,modeToggle,deleteMemes,addMemes,updateMemes }}>
             {props.children}
         </MemesContext.Provider>
     )

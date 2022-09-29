@@ -9,7 +9,7 @@ const MemesDetails = () => {
   const context = useContext(MemesContext);
   const {isDarkMode} = context;
   const { state } = useLocation();
-  const { title, prevLink,} = state || {}
+  let { title, previewUrl,tag} = state || {}
   // console.log(state)
 
   const shareData = {
@@ -31,13 +31,16 @@ const MemesDetails = () => {
     setIsPopUp(!isPopUp)
   }
 
-
-
+  // const selectedTag = memesData.filter((value)=>{
+  //   return value.tag === tag
+  // })
+  // console.log(tag)
+ 
   return (
     <>
       <div className='detailsContainer'>
         {state ? <div className={`videoContainer ${isDarkMode?"darkModeActive":""}`} >
-          <video width='640' height='360' src={prevLink} controls disablePictureInPicture controlsList='noplaybackrate' />
+          <video width='640' height='360' src={previewUrl} controls disablePictureInPicture controlsList='noplaybackrate' />
           <div className="videoShortDetails titleLogoBox">
               <img className='userLogo' src="../logo192.png" width='33' height='33' alt="uploader" />
               <h5>{title}</h5>
@@ -59,7 +62,7 @@ const MemesDetails = () => {
 
 
         <div className="otherContent">
-          <Memes title={'Related videos'} />
+          <Memes title={'Related videos'}  />
         </div>
       </div>
 

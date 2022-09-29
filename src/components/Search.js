@@ -17,9 +17,9 @@ const Search = () => {
   })
   // console.log(filterData)
 
-  const redirectNextPage = (id, title, prevLink) => {
+  const redirectNextPage = (id, title, previewUrl) => {
     navigate(`/watch/${id}`, {
-      state: { id, title, prevLink }
+      state: { id, title, previewUrl }
     });
     // console.log(id)
   }
@@ -35,10 +35,10 @@ const Search = () => {
           {filterData.length > 0 ?
             filterData.map((data) => {
               return (
-                <div className="videoBox" key={data.id} onClick={() => redirectNextPage(data.id, data.title, data.prevLink)}>
-                  {data.posterLink ? <img width='274' height='154' className='poster' src={data.posterLink} alt="poster" loading='lazy' />
+                <div className="videoBox" key={data._id} onClick={() => redirectNextPage(data._id, data.title, data.previewUrl)}>
+                  {data.posterUrl ? <img width='274' height='154' className='poster' src={data.posterUrl} alt="poster" loading='lazy' />
                     :
-                    <video className='poster' width='274' height='154' src={data.prevLink} disablePictureInPicture />
+                    <video className='poster' width='274' height='154' src={data.previewUrl} disablePictureInPicture />
                   }
                   <span className='playIcon'><i className="fa-solid fa-play"></i></span>
                   <div className="videoShortDetails">

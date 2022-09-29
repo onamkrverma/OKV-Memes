@@ -49,7 +49,7 @@ const NavBar = () => {
         <div className="searchBox" style={{ display: isMenuActive ? "block" : '' }}>
           <form onSubmit={handleSubmit} autoComplete="off">
             <input type="text" placeholder='Search...' ref={refText} name='search' autoComplete='off' required />
-            <span onClick={clearField} >X</span>
+            <span onClick={clearField} >&times;</span>
             <button type='submit' className="submitBtn" style={{background: isDarkMode?'#ffffff14':""}} title='submit'><i className="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>

@@ -6,11 +6,12 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-nav{
+
+nav {
     z-index: 10;
     position: sticky;
     top: 0;
-    
+
 }
 
 
@@ -53,11 +54,12 @@ nav{
     justify-content: center;
 }
 
-.logo a{
+.logo a {
     color: inherit;
     text-decoration: none;
 }
-.logo h1 { 
+
+.logo h1 {
     font-family: 'Lobster';
     margin-left: 5px;
     font-weight: 400;
@@ -116,11 +118,12 @@ nav{
 .searchBox span {
     position: absolute;
     right: 11%;
-    top: 25%;
-    font-size: 1.1rem;
+    top: 6%;
+    font-size: 1.6rem;
     cursor: pointer;
 }
-.submitBtn{
+
+.submitBtn {
     border: 1px solid #303030;
     color: inherit;
 }
@@ -130,19 +133,21 @@ nav{
     font-size: 1rem;
     padding: 6px 15px;
 }
-.darkModeBtn{
+
+.darkModeBtn {
     background: transparent;
     color: inherit;
     margin: auto;
     border: none;
     cursor: pointer;
 }
-.darkModeBtn i{
+
+.darkModeBtn i {
     font-size: 1.5rem;
 }
 
 /* menuBar */
-.menuBar{
+.menuBar {
     position: absolute;
     right: 2px;
     top: 10px;
@@ -156,16 +161,20 @@ nav{
     margin: 4px;
     transition: all 0.3s ease-in-out;
 }
-.menuActive .line1{
+
+.menuActive .line1 {
     transform: rotate(45deg) translate(6px, 6px);
 }
-.menuActive .line2{
+
+.menuActive .line2 {
     display: none;
 }
-.menuActive .line3{
+
+.menuActive .line3 {
     transform: rotate(-45deg) translate(0px, 3px);
 }
-.darkModeActive .line{
+
+.darkModeActive .line {
     background: white;
 }
 
@@ -188,7 +197,8 @@ nav{
 .heroContent {
     width: 40%;
 }
-.heroContent p{
+
+.heroContent p {
     margin: 5px 0;
 }
 
@@ -266,11 +276,13 @@ nav{
     align-items: center;
     margin: 5px 0;
 }
+
 .videoShortDetails .userLogo {
     border-radius: 20px;
     border: 2px dashed #548696;
 }
-.videoShortDetails h5{
+
+.videoShortDetails h5 {
     line-height: 1.2rem;
     margin-left: 10px;
     text-align: start;
@@ -291,14 +303,15 @@ nav{
     height: fit-content;
     margin: 10px;
     text-align: center;
-   background-color: white;
+    background-color: white;
     padding-bottom: 7px;
 }
 
-.titleLogoBox{
+.titleLogoBox {
     margin: 5px;
 }
-.titleLogoBox h5{
+
+.titleLogoBox h5 {
     font-size: 1rem;
 }
 
@@ -314,7 +327,7 @@ nav{
     margin-top: 0;
 }
 
-.btn{
+.btn {
     position: relative;
 }
 
@@ -357,7 +370,7 @@ nav{
     background: black;
 }
 
-.popUpBox{
+.popUpBox {
     display: none;
     position: absolute;
     z-index: 15;
@@ -368,15 +381,16 @@ nav{
     padding: 5px;
     border-radius: 5px;
 }
-.popUpBox::after{
+
+.popUpBox::after {
     content: '';
     position: absolute;
     left: 10px;
     top: -15px;
     border-top: none;
-    border-right: 15px solid transparent ;
-    border-left: 15px solid transparent ;
-    border-bottom: 15px solid black ;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
 
 }
 
@@ -398,6 +412,7 @@ nav{
     width: 355px;
     height: 260px;
 }
+
 .results .videoBox .poster {
     height: 75%;
 }
@@ -416,18 +431,20 @@ nav{
 }
 
 /* page not found */
-.pageNotFound{
+.pageNotFound {
     text-align: center;
 }
-.pageNotFound img{
+
+.pageNotFound img {
     width: 30%;
 }
 
-.errorMessage{
+.errorMessage {
     text-align: center;
     margin-bottom: 10px;
 }
-.reloadBtn{
+
+.reloadBtn {
     border: none;
     margin: 6px;
     padding: 10px;
@@ -436,17 +453,247 @@ nav{
     border-radius: 10px;
     cursor: pointer;
 }
-.reloadBtn:hover{
+
+.reloadBtn:hover {
     background: black;
 }
 
-.reloadBtn i{
+.reloadBtn i {
     margin-right: 5px;
 }
 
 
 /* dark mode */
-.darkModeActive{
+.darkModeActive {
     background-color: #202124;
     color: white;
+}
+
+
+/* for admin section */
+.adminContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.sideBar{
+    text-align: center;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    background: lightblue;
+    color: black;
+}
+.sideBarBtn {
+    display: flex;
+    flex-direction: column;
+}
+.sideBar button {
+    background: #3a00fb;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+    
+}
+
+.sideBar button:hover {
+    background: #2b2b2b;
+    color: white;
+}
+
+.detailsCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    align-items: center;
+    box-shadow: 0 0 3px 0px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.controlBtn {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+}
+
+#editBtn {
+    background: #96f208;
+}
+
+#deleteBtn {
+    background: red;
+    color: white;
+}
+
+.addMemesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.addMemesBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    color: black;
+    background: lightblue;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.addMemesBox input {
+    outline: none;
+    padding: 2px 5px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.addMemesBox button {
+    font-size: 1rem;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #1a1af0;
+    color: white;
+    font-weight: bold;
+}
+
+.updateBox {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 5;
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+    backdrop-filter: blur(1px);
+}
+
+.updateContent {
+    position: relative;
+    background: lightblue;
+    color: black;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.updateContent form {
+    width: 100%;
+}
+
+.updateContent h3 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.closeBtn {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.loginBox{
+    display: flex;
+    position: relative;
+    border-radius: 10px;
+    height: 300px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 5px 0px;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    height: 80%;
+}
+.inputBox {
+    display: flex;
+    border-bottom: 1px solid;
+    margin: 5px 0;
+    align-items: center;
+    justify-content: center;
+}
+.inputBox input{
+    margin: 10px 0;
+    font-size: 1rem;
+    padding: 2px 10px;
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+.design{
+    width: 100%;
+    height: 32%;
+    background: #0d0f63;
+    position: absolute;
+    top: 0px;
+    border-radius: 10px 100px 5px 100px;
+    z-index: -5;
+}
+.passwordVisible{
+    display: flex;
+}
+.passwordVisible input{
+    accent-color: darkblue;
+}
+.passwordVisible p{
+    font-size: small;
+    margin: 0 5px;
+}
+.loginBtn {
+    margin-top: 10px;
+    font-size: 1rem;
+    border: none;
+    background: #0d0f63;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
 }
