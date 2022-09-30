@@ -501,9 +501,12 @@ nav {
     
 }
 
-.sideBar button:hover {
+.sideBar button:hover ,.addMemesBox button:hover{
     background: #2b2b2b;
     color: white;
+}
+.mainContent{
+    width: 80%;
 }
 
 .detailsCards {
@@ -524,7 +527,9 @@ nav {
 .card img {
     width: 100%;
 }
-
+.cardDetails {
+    padding: 3px 5px;
+}
 .controls {
     display: flex;
     justify-content: space-evenly;
@@ -541,11 +546,11 @@ nav {
     cursor: pointer;
 }
 
-#editBtn {
+.editBtn {
     background: #96f208;
 }
 
-#deleteBtn {
+.deleteBtn {
     background: red;
     color: white;
 }
@@ -577,6 +582,16 @@ nav {
     border: none;
     border-radius: 5px;
 }
+.addMemesBox textarea{
+    outline: none;
+    resize: none;
+    height: 100px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 2px 5px;
+    font-size: 1rem;
+}
 
 .addMemesBox button {
     font-size: 1rem;
@@ -590,11 +605,13 @@ nav {
     font-weight: bold;
 }
 
+
 .updateBox {
     display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
+    top: 5px;
     z-index: 5;
     width: 80%;
     height: 100%;

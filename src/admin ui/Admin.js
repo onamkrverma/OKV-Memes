@@ -33,7 +33,7 @@ const Admin = () => {
       <button type='button' onClick={handleLogout}>Logout</button>
       </div>
       </div>
-      <div className="mainContent" style={{width:'80%'}}>
+      <div className="mainContent" >
       <FetchAllData isAddShow={isAdd}/>
       <AddMemes isAddShow={isAdd} />
       </div>  

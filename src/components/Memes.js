@@ -25,9 +25,9 @@ const Memes = (props) => {
   // //   data = selectedTagData;
   // // }
 
-  const redirectNextPage = (id, title, previewUrl,tag) => {
+  const redirectNextPage = (id, title, videoUrl,tag) => {
     navigate(`/watch/${id}`, {
-      state: { id, title, previewUrl,tag }
+      state: { id, title, videoUrl,tag }
     });
     // console.log(id)
   }
@@ -47,10 +47,10 @@ const Memes = (props) => {
       <div className='memesInner' >
         {newMemesData.map((data) => {
           return (
-            <div className="videoBox" key={data._id} onClick={() => redirectNextPage(data._id, data.title, data.previewUrl,data.tag)}>
+            <div className="videoBox" key={data._id} onClick={() => redirectNextPage(data._id, data.title, data.videoUrl,data.tag)}>
              {data.posterUrl?<img className='poster' width='274' height='154' src={data.posterUrl} alt="poster" loading="lazy"/>
              :
-             <video className='poster' width='274' height='154' src={data.previewUrl} disablePictureInPicture /> 
+             <video className='poster' width='274' height='154' src={data.videoUrl} disablePictureInPicture /> 
              } 
               <span className='playIcon'><i className="fa-solid fa-play"></i></span>
               <div className="videoShortDetails">

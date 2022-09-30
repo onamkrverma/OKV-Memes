@@ -120,6 +120,9 @@
     }
 
     /* admin section */
+    .mainContent,.updateBox{
+        width: 100%;
+    }
     .card {
         width: 45%;
     }
@@ -127,6 +130,7 @@
     .addMemesBox {
         width: 85%;
     }
+    
 }
 
 

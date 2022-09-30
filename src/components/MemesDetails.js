@@ -9,7 +9,7 @@ const MemesDetails = () => {
   const context = useContext(MemesContext);
   const {isDarkMode} = context;
   const { state } = useLocation();
-  let { title, previewUrl,tag} = state || {}
+  let { title, videoUrl,tag} = state || {}
   // console.log(state)
 
   const shareData = {
@@ -40,7 +40,7 @@ const MemesDetails = () => {
     <>
       <div className='detailsContainer'>
         {state ? <div className={`videoContainer ${isDarkMode?"darkModeActive":""}`} >
-          <video width='640' height='360' src={previewUrl} controls disablePictureInPicture controlsList='noplaybackrate' />
+          <video width='640' height='360' src={videoUrl} controls disablePictureInPicture controlsList='noplaybackrate' />
           <div className="videoShortDetails titleLogoBox">
               <img className='userLogo' src="../logo192.png" width='33' height='33' alt="uploader" />
               <h5>{title}</h5>

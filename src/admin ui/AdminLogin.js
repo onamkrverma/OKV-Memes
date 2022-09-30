@@ -52,11 +52,11 @@ const AdminLogin = () => {
              
             <div className='emailBox inputBox'>
                 <i className="fa-solid fa-user"></i>
-            <input type="email" placeholder='Email' name='email' value={credential.email} onChange={handleChange} style={{color:isDarkMode?'white':'black'}}/>
+            <input type="email" placeholder='Email' name='email' value={credential.email} onChange={handleChange} style={{color:isDarkMode?'white':'black'}} autoComplete="off" required/>
             </div>
             <div className="passwordBox inputBox">
             <i className="fa-solid fa-lock"></i>
-            <input type="password" ref={refPass} placeholder='Password' name='password' value={credential.password} onChange={handleChange} autoComplete='off' style={{color:isDarkMode?'white':'black'}}/>
+            <input type="password" ref={refPass} placeholder='Password' name='password' value={credential.password} onChange={handleChange} autoComplete='off' style={{color:isDarkMode?'white':'black'}} required/>
             </div>
             <div className="passwordVisible">
                 <input type="checkbox" title='showpassword' onClick={showPassword} />

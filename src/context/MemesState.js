@@ -37,28 +37,28 @@ const MemesState = (props) => {
     }, [])
 
     // add data
-    const addMemes = async(title,description,previewUrl,posterUrl,tag)=>{
+    const addMemes = async(title,description,videoUrl,posterUrl,tag)=>{
         const response = await fetch(`${host}/addmemes`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
                 'auth-token':localStorage.getItem('token')
             },
-            body: JSON.stringify({title,description,previewUrl,posterUrl,tag})
+            body: JSON.stringify({title,description,videoUrl,posterUrl,tag})
         })
         const newMemes = await response.json();
         setMemesData(memesData.concat(newMemes));
     }
 
     // edit data 
-    const updateMemes = async(id,title,description,previewUrl,posterUrl,tag)=>{
+    const updateMemes = async(id,title,description,videoUrl,posterUrl,tag)=>{
         const response = await fetch(`${host}/updatememes/${id}`, {
             method: 'PUT',
             headers:{
                 'Content-Type': 'application/json',
                 'auth-token':localStorage.getItem('token')
             },
-            body: JSON.stringify({title,description,previewUrl,posterUrl,tag})
+            body: JSON.stringify({title,description,videoUrl,posterUrl,tag})
 
         })
         const data = await response.json();
@@ -70,8 +70,8 @@ const MemesState = (props) => {
             if(element._id=== id){
                 element.title = title;
                 element.description = description;
-                element.previewUrl = previewUrl;
-                element.posterposterUrl =posterUrl;
+                element.videoUrl = videoUrl;
+                element.posterUrl = posterUrl;
                 element.tag = tag;
                 break;
             }
