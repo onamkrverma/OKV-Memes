@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MemesContext from "./MemesContext";
 
 const MemesState = (props) => {
-    const host = 'http://localhost:5000/api/memes'
+    const host = process.env.REACT_APP_API_URL
     const getDarkModeValue = ()=>{
         return JSON.parse(localStorage.getItem('darkMode'))||false;
     }
@@ -14,7 +14,7 @@ const MemesState = (props) => {
     // get all data
     const getData = async () => {
         try {
-            const response = await fetch(`${host}/fetchallmemes`, {
+            const response = await fetch(`${host}/api/memes/fetchallmemes`, {
                 method: 'GET',
                 headers:{
                     'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const MemesState = (props) => {
 
     // add data
     const addMemes = async(title,description,videoUrl,posterUrl,tag)=>{
-        const response = await fetch(`${host}/addmemes`, {
+        const response = await fetch(`${host}/api/memes/addmemes`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const MemesState = (props) => {
 
     // edit data 
     const updateMemes = async(id,title,description,videoUrl,posterUrl,tag)=>{
-        const response = await fetch(`${host}/updatememes/${id}`, {
+        const response = await fetch(`${host}/api/memes/updatememes/${id}`, {
             method: 'PUT',
             headers:{
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ const MemesState = (props) => {
 
     // delete data
     const  deleteMemes = async(id)=>{
-        const response = await fetch(`${host}/deletememes/${id}`, {
+        const response = await fetch(`${host}/api/memes/deletememes/${id}`, {
             method: 'DELETE',
             headers:{
                 'Content-Type': 'application/json',

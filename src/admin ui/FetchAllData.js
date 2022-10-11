@@ -71,10 +71,10 @@ const FetchAllData = (props) => {
             <div className="card" key={element._id}>
               <img src={element.posterUrl} width='150' height='100' alt="posterUrl" />
               <div className="cardDetails">
-              <h5>{element.title}</h5>
-              <p>{element.description}</p>
+              <h5>{element.title.slice(0,15)}</h5>
+              <p>{element.description.slice(0,20)+"..."}</p>
               <a href={element.videoUrl} target="_blank" rel="noreferrer" >Video url</a>
-              <p>{element.tag}</p>
+              <p>{element.tag.slice(0,10)}</p>
               </div>
               <div className="controls">
                 <button onClick={() => editedMemes(element)} type="button" title='Edit'  className='controlBtn editBtn'>Edit</button>

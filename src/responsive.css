@@ -120,9 +120,6 @@
     }
 
     /* admin section */
-    .mainContent,.updateBox{
-        width: 100%;
-    }
     .card {
         width: 45%;
     }
@@ -132,8 +129,6 @@
     }
     
 }
-
-
 
 /* for tablet view */
 @media ((min-width:427px) and (max-width:769px)) {
@@ -154,5 +149,20 @@
 
     .searchBox span {
         right: 16%;
+    }
+}
+
+/* for both mobile and tablet */
+@media((max-width:769px)){
+    .mainContent,.updateBox{
+        width: 100%;
+    }
+}
+
+/* for only laptop scree */
+@media((min-width:769px)){
+    .showAllContents {
+        height: 500px;
+        overflow-y: scroll;
     }
 }
