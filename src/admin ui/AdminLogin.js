@@ -5,7 +5,7 @@ const AdminLogin = () => {
     const context = useContext(MemesContext);
     const {isDarkMode} = context
     const [credential, setCredential] = useState({email:"",password:""})
-    const host = process.env.REACT_APP_API_URL
+    const host = 'https://okv-memes-api.onrender.com'
     let navigate = useNavigate();
     const handleSubmit = async(e)=>{
         e.preventDefault();
