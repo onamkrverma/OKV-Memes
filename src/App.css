@@ -215,6 +215,10 @@ nav {
     top: 0px;
     border-radius: 200px 0 0px 200px
 }
+.loading{
+    flex-direction: column;
+    align-items: center;
+}
 
 /* memes section */
 .memesContainer {

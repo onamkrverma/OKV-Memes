@@ -43,6 +43,7 @@ const Memes = (props) => {
       </div>
       <div className="loading" style={{display:isLoad?'flex':'none'}}>
           <img src="../image/dualBall.svg" width='80' height='80' alt="loading" />
+          <h5>Please wait.. Connecting to Server</h5>
       </div>
       <div className='memesInner' >
         {newMemesData.map((data) => {
