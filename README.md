@@ -6,7 +6,6 @@ You can use these videos memes in your **YouTube videos** without any Copyrights
 
 
 
-
 ## Built with
 This project is built with these technologies 
 - React.js
@@ -18,7 +17,8 @@ This project is built with these technologies
  📖  **Multi-Page Layout** \
  📱  **Fully Responsive**
 
-
+## Deployement
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0ac304c4-a7c5-4aeb-af7e-0115f09830e1/deploy-status)](https://okvmemes.netlify.app/)
 
 # Getting Started 
 clone down this repositery. You will need to `node.js` and `git` installed globally on your machine.
