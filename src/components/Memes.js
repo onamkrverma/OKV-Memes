@@ -3,27 +3,20 @@ import { useNavigate } from "react-router-dom";
 import loadErrorImg from '../assets/503 Error.svg';
 import MemesContext from '../context/MemesContext';
 
-const Memes = (props) => {
-  const { title ,selectedTag} = props
+const Memes = ({title,selectedTag}) => {
   const context = useContext(MemesContext)
-  const {memesData,isLoad,errorMsg}= context
-  
+  let {memesData,isLoad,errorMsg}= context
   let navigate = useNavigate();
-  const memesDataArray = memesData.map((obj)=>{
-    return {...obj,date:new Date(obj.date)};
-  });
-  const desendingOrder = memesDataArray.sort((a, b) => Number(b.date) - Number(a.date))
+  
+
+  const tagFilters = memesData.filter((value)=>{
+    return value.tag.includes(selectedTag?.split(',').slice(0,1)); 
+  })
+  
+  if(tagFilters.length>0){
+    memesData = tagFilters;
+  }
  
-  // const selectedTagData = memesData.filter((value)=>{
-  //   return value.tag.includes(selectedTag)
-  // })
-  let newMemesData = desendingOrder;
-  // console.log(datas[0].date)
-  // console.log(selectedTag)
-  // console.log(selectedTagData)
-  // // if(selectedTag){
-  // //   data = selectedTagData;
-  // // }
 
   const redirectNextPage = (id, title, videoUrl,tag) => {
     navigate(`/watch/${id}`, {
@@ -36,6 +29,7 @@ const Memes = (props) => {
     window.location.reload()
   }
 
+
   return (
     <div className='memesContainer'>
       <div className='heading'style={{ display: !errorMsg ? "block" : 'none' }}>
@@ -46,7 +40,7 @@ const Memes = (props) => {
           <h5>Please wait.. Connecting to Server</h5>
       </div>
       <div className='memesInner' >
-        {newMemesData.map((data) => {
+        {memesData.map((data) => {
           return (
             <div className="videoBox" key={data._id} onClick={() => redirectNextPage(data._id, data.title, data.videoUrl,data.tag)}>
              {data.posterUrl?<img className='poster' width='274' height='154' src={data.posterUrl} alt="poster" loading="lazy"/>

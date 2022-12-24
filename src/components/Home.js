@@ -13,7 +13,7 @@ const Home = () => {
         <div className={`heroSection ${isDarkMode?"darkModeActive":""}`}>
           <div className="heroContent">
             <h1>Make Video More Engaging</h1>
-            <p>Adding memes to your video can increase your video audience retention</p>
+            <p>Adding memes to your video can increase video audience retention</p>
             
           </div>
           <div className="heroImage">

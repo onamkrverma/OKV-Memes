@@ -22,10 +22,12 @@ const MemesState = (props) => {
 
             })
             const data = await response.json();
+            const dataArray = data.map((obj)=> ({...obj,date:new Date(obj.date)}))
+            const desendingOrderData = dataArray.sort((a,b)=> Number(b.date) - Number(a.date))
 
-            setMemesData(data);
+            setMemesData(desendingOrderData);
             setIsLoad(false);
-            // console.log(data)
+            // console.log('data1', desendingOrderData)
         } catch (error) {
             // console.log('error',error);
             setIsLoad(false)

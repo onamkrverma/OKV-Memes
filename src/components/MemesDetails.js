@@ -26,16 +26,11 @@ const MemesDetails = () => {
     }
 
   }
-
+  
   const popUpClick = () => {
     setIsPopUp(!isPopUp)
   }
 
-  // const selectedTag = memesData.filter((value)=>{
-  //   return value.tag === tag
-  // })
-  // console.log(tag)
- 
   return (
     <>
       <div className='detailsContainer'>
@@ -62,7 +57,7 @@ const MemesDetails = () => {
 
 
         <div className="otherContent">
-          <Memes title={'Related videos'}  />
+          <Memes title={'Related videos'} selectedTag={tag} />
         </div>
       </div>
 
