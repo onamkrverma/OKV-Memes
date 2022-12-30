@@ -14,7 +14,14 @@ nav {
 
 }
 
+.loading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 
+}
 
 /* scrollbar */
 ::-webkit-scrollbar {
@@ -215,10 +222,7 @@ nav {
     top: 0px;
     border-radius: 200px 0 0px 200px
 }
-.loading{
-    flex-direction: column;
-    align-items: center;
-}
+
 
 /* memes section */
 .memesContainer {
@@ -253,12 +257,12 @@ nav {
     /* box-shadow: 0 0 5px 0px #c9c9c9; */
     cursor: pointer;
     position: relative;
-    border-radius: 15px;
+    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .videoBox:hover{
-    transform: scale3d(1.1,1.15,1) translate3d(0,0,0);
+    transform: scale3d(1.1,1.1,1) translate3d(0,0,0);
     z-index: 5;
     
 }
@@ -661,6 +665,7 @@ nav {
 .loginContainer {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
     height: 100vh;
 }
@@ -726,4 +731,8 @@ nav {
     font-weight: bold;
     border-radius: 15px;
     cursor: pointer;
+}
+
+.testInfo{
+    margin: 20px 0;
 }

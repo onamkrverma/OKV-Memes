@@ -66,6 +66,12 @@ const AdminLogin = () => {
             <button type='submit' className='loginBtn'>LOGIN</button>
             </form>
         </div>
+
+        <div className="testInfo">
+            <h5>Login info for testing </h5>
+            <p>email: test@gmail.com</p>
+            <p>password: test</p>
+        </div>
     </div>
   )
 }
