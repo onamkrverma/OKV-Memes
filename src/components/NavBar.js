@@ -1,14 +1,15 @@
-import React, { useRef ,useContext} from 'react'
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useContext, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import MemesContext from '../context/MemesContext';
 
 const NavBar = () => {
   const [isMenuActive, setIsMenuActive] = useState(false)
   const context = useContext(MemesContext);
-  const {isDarkMode,modeToggle} = context
-  let navigate = useNavigate();
+  const { isDarkMode, modeToggle, memesData } = context
+  const [searchTerm, setSearchTerm] = useState('')
 
+  let navigate = useNavigate();
+  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,12 +18,20 @@ const NavBar = () => {
       state: { searchValue: value }
     })
 
+  }
+
+
+
+  const searchTermFilter = memesData.map((data) => data.title).filter((val) => (val.toLowerCase()).includes(searchTerm.toLowerCase()));
+
+  const handleSearchTerm = (e) => {
+    setSearchTerm(e.target.innerText);
+    inputRef.current.focus();
 
   }
-  const refText = useRef(null)
-  const clearField = () => {
-    refText.current.value = null
-  }
+
+// console.log(searchTerm)
+// console.log(searchTermFilter[0])
 
   const activeMenue = () => {
     setIsMenuActive(!isMenuActive)
@@ -48,16 +57,41 @@ const NavBar = () => {
         </div>
         <div className="searchBox" style={{ display: isMenuActive ? "block" : '' }}>
           <form onSubmit={handleSubmit} autoComplete="off">
-            <input type="text" placeholder='Search...' ref={refText} name='search' autoComplete='off' required />
-            <span onClick={clearField} >&times;</span>
-            <button type='submit' className="submitBtn" style={{background: isDarkMode?'#ffffff14':""}} title='submit'><i className="fa-solid fa-magnifying-glass"></i></button>
+            <input
+              type="text"
+              placeholder='Search...'
+              name='search'
+              autoComplete='off'
+              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchTerm}
+              ref={inputRef}
+              required />
+            <span onClick={() => setSearchTerm('')} >&times;</span>
+            <button type='submit' className="submitBtn" style={{ background: isDarkMode ? '#ffffff14' : "" }} title='submit'>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
           </form>
+          {(searchTerm && searchTerm !== searchTermFilter[0]) &&
+            <div className="search-auto-box" >
+              {searchTermFilter.length ? searchTermFilter.map((title, index) =>
+                <div className="search-title" key={index} onClick={handleSearchTerm}>
+                  {title}
+                </div>)
+              :
+                <div className="search-title" >
+                  No results found
+                </div>
+              }
+            </div>
+            
+          }
         </div>
 
+
         <button className="darkModeBtn" type='button' title='switch theme' style={{ display: isMenuActive ? "block" : '' }} onClick={handleDarkMode}>
-          <i className="fa-solid fa-moon" style={{display:isDarkMode?'none':'block'}} ></i>
-          <i className="fa-solid fa-sun" style={{display:isDarkMode?'block':'none'}}></i>
-          <p>{isDarkMode?"Light Mode":"Dark Mode"}</p>
+          <i className="fa-solid fa-moon" style={{ display: isDarkMode ? 'none' : 'block' }} ></i>
+          <i className="fa-solid fa-sun" style={{ display: isDarkMode ? 'block' : 'none' }}></i>
+          <p>{isDarkMode ? "Light Mode" : "Dark Mode"}</p>
         </button>
 
         <div className={`menuBar ${isMenuActive ? "menuActive" : ""}`} onClick={activeMenue}>

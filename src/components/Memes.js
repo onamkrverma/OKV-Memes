@@ -19,10 +19,8 @@ const Memes = ({ title, selectedTag }) => {
   }
 
 
-  const redirectNextPage = (id, title, videoUrl, tag) => {
-    navigate(`/watch/${id}`, {
-      state: { id, title, videoUrl, tag }
-    });
+  const redirectNextPage = (id) => {
+    navigate(`/watch/${id}`)
     // console.log(id)
   }
 
@@ -43,7 +41,7 @@ const Memes = ({ title, selectedTag }) => {
             :
             memesData.map((data) => {
               return (
-                <div className="videoBox" key={data._id} onClick={() => redirectNextPage(data._id, data.title, data.videoUrl, data.tag)}>
+                <div className="videoBox" key={data._id} onClick={() => redirectNextPage(data._id)}>
                   {data.posterUrl ? <img className='poster' width='274' height='154' src={data.posterUrl} alt="poster"  />
                     :
                     <video className='poster' width='274' height='154' src={data.videoUrl} disablePictureInPicture />

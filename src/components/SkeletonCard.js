@@ -8,7 +8,7 @@ const SkeletonCard = ({ amount }) => {
   return (
     loadCard.map((value, i) =>
     <div className="videoBox" key={i}>
-      <Skeleton width={274} height={154} />
+      <Skeleton height={154} />
       <div className="videoShortDetails">
         <Skeleton circle='true' width={33} height={33} />
         <h5 style={{ width: '100%' }} ><Skeleton /></h5>

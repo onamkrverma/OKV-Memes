@@ -1,21 +1,23 @@
 import React, { useState,useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Memes from './Memes';
-import loadErrorImg from '../assets/503 Error.svg';
 import MemesContext from '../context/MemesContext';
 
 const MemesDetails = () => {
   const [isPopUp, setIsPopUp] = useState(false);
   const context = useContext(MemesContext);
-  const {isDarkMode} = context;
-  const { state } = useLocation();
-  let { title, videoUrl,tag} = state || {}
+  const {isDarkMode,memesData} = context;
+  const {id} = useParams()
   // console.log(state)
+
+
+  const currentMemes = memesData.filter((val)=>val._id===id)
+
 
   const shareData = {
     title: "Watch New Funny Memes",
     text: "Okv-Memes is a place where you can watch and download popular video memes",
-    url: 'https://okvmemes.netlify.app/'
+    url: document.location.href
   }
   const shareClick = async () => {
     try {
@@ -32,13 +34,12 @@ const MemesDetails = () => {
   }
 
   return (
-    <>
       <div className='detailsContainer'>
-        {state ? <div className={`videoContainer ${isDarkMode?"darkModeActive":""}`} >
-          <video width='640' height='360' src={videoUrl} controls disablePictureInPicture controlsList='noplaybackrate' />
+        <div className={`videoContainer ${isDarkMode?"darkModeActive":""}`} >
+          <video width='640' height='360' src={currentMemes[0]?.videoUrl} controls disablePictureInPicture controlsList='noplaybackrate' />
           <div className="videoShortDetails titleLogoBox">
               <img className='userLogo' src="../logo192.png" width='33' height='33' alt="uploader" />
-              <h5>{title}</h5>
+              <h5>{currentMemes[0]?.title}</h5>
             </div>
           <div className="btn">
             <button className='downloadBtn' type='button' onClick={popUpClick}><i className="fa-solid fa-download"></i>Download</button>
@@ -47,23 +48,15 @@ const MemesDetails = () => {
             <p className='popUpBox' style={{ display: isPopUp ? 'block' : 'none' }} >Click on ⁝ dot in video to start downloading</p>
           </div>
           </div>
-          :
-          <div className='loadError'>
-            <img src={loadErrorImg} alt="Server Error" />
-            <h3>Sorry! unable to load this video</h3>
-            <p>Direct access from url not allowed</p>
-          </div>
-        }
-
+          
 
         <div className="otherContent">
-          <Memes title={'Related videos'} selectedTag={tag} />
+          <Memes title={'Related videos'} selectedTag={currentMemes[0]?.tag} />
         </div>
       </div>
 
 
 
-    </>
   )
 }
 
