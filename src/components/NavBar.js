@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MemesContext from '../context/MemesContext';
 
@@ -7,6 +7,7 @@ const NavBar = () => {
   const context = useContext(MemesContext);
   const { isDarkMode, modeToggle, memesData } = context
   const [searchTerm, setSearchTerm] = useState('')
+  const [searchTermFilter, setSearchTermFilter] = useState([]);
 
   let navigate = useNavigate();
   const inputRef = useRef(null);
@@ -20,18 +21,29 @@ const NavBar = () => {
 
   }
 
-
-
-  const searchTermFilter = memesData.map((data) => data.title).filter((val) => (val.toLowerCase()).includes(searchTerm.toLowerCase()));
+  useEffect(() => {
+   
+    const timer = setTimeout(() => {
+      if (searchTerm) {
+        const dataFilter = memesData.map((data) => data.title).filter((val) => (val.toLowerCase()).includes(searchTerm.toLowerCase()));
+        setSearchTermFilter(dataFilter)
+      }
+      else{
+        setSearchTermFilter([])
+      }
+    }, 1000);
+    return () => clearTimeout(timer)
+  }, [searchTerm])
 
   const handleSearchTerm = (e) => {
     setSearchTerm(e.target.innerText);
     inputRef.current.focus();
 
   }
+  
 
-// console.log(searchTerm)
-// console.log(searchTermFilter[0])
+  // console.log(searchTerm)
+  // console.log(searchTermFilter[0])
 
   const activeMenue = () => {
     setIsMenuActive(!isMenuActive)
@@ -71,19 +83,18 @@ const NavBar = () => {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
-          {(searchTerm && searchTerm !== searchTermFilter[0]) &&
-            <div className="search-auto-box" >
-              {searchTermFilter.length ? searchTermFilter.map((title, index) =>
+          {(searchTerm && searchTerm?.trim() !== searchTermFilter[0]?.trim()) &&
+            <div className="search-auto-box" style={{height: !searchTermFilter.length && 'auto'}}>
+              { searchTermFilter?.map((title, index) =>
                 <div className="search-title" key={index} onClick={handleSearchTerm}>
                   {title}
                 </div>)
-              :
-                <div className="search-title" >
-                  No results found
-                </div>
-              }
+                }
+                
+                
+              
             </div>
-            
+
           }
         </div>
 
