@@ -2,129 +2,144 @@ import { useState, useEffect } from "react";
 import MemesContext from "./MemesContext";
 
 const MemesState = (props) => {
-    const host = 'https://okv-memes-api.onrender.com'
-    const getDarkModeValue = ()=>{
-        return JSON.parse(localStorage.getItem('darkMode'))||false;
+  const host = "https://okv-memes-backend.vercel.app";
+  const getDarkModeValue = () => {
+    return JSON.parse(localStorage.getItem("darkMode")) || false;
+  };
+  const [memesData, setMemesData] = useState([]);
+  const [isLoad, setIsLoad] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(getDarkModeValue());
+
+  // get all data
+  const getData = async () => {
+    try {
+      const response = await fetch(`${host}/api/memes/fetchallmemes`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      const dataArray = data.map((obj) => ({
+        ...obj,
+        date: new Date(obj.date),
+      }));
+      const desendingOrderData = dataArray.sort(
+        (a, b) => Number(b.date) - Number(a.date)
+      );
+
+      setMemesData(desendingOrderData);
+      setIsLoad(false);
+      // console.log('data1', desendingOrderData)
+    } catch (error) {
+      // console.log('error',error);
+      setIsLoad(false);
+      setErrorMsg("Can't load data... Please Try Again");
     }
-    const [memesData, setMemesData] = useState([]);
-    const [isLoad, setIsLoad] = useState(true);
-    const [errorMsg, setErrorMsg] = useState('');
-    const [isDarkMode, setIsDarkMode] = useState(getDarkModeValue());
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
-    // get all data
-    const getData = async () => {
-        try {
-            const response = await fetch(`${host}/api/memes/fetchallmemes`, {
-                method: 'GET',
-                headers:{
-                    'Content-Type': 'application/json'
-                }
+  // add data
+  const addMemes = async (title, description, videoUrl, posterUrl, tag) => {
+    const response = await fetch(`${host}/api/memes/addmemes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ title, description, videoUrl, posterUrl, tag }),
+    });
+    const newMemes = await response.json();
+    setMemesData(memesData.concat(newMemes));
+  };
 
-            })
-            const data = await response.json();
-            const dataArray = data.map((obj)=> ({...obj,date:new Date(obj.date)}))
-            const desendingOrderData = dataArray.sort((a,b)=> Number(b.date) - Number(a.date))
+  // edit data
+  const updateMemes = async (
+    id,
+    title,
+    description,
+    videoUrl,
+    posterUrl,
+    tag
+  ) => {
+    const response = await fetch(`${host}/api/memes/updatememes/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ title, description, videoUrl, posterUrl, tag }),
+    });
+    const data = await response.json();
+    console.log(data);
 
-            setMemesData(desendingOrderData);
-            setIsLoad(false);
-            // console.log('data1', desendingOrderData)
-        } catch (error) {
-            // console.log('error',error);
-            setIsLoad(false)
-            setErrorMsg("Can't load data... Please Try Again")
-        }
+    let updatedMemes = JSON.parse(JSON.stringify(memesData));
+    for (let index = 0; index < updatedMemes.length; index++) {
+      let element = updatedMemes[index];
+      if (element._id === id) {
+        element.title = title;
+        element.description = description;
+        element.videoUrl = videoUrl;
+        element.posterUrl = posterUrl;
+        element.tag = tag;
+        break;
+      }
     }
-    useEffect(() => {
-        getData();
-    }, [])
+    setMemesData(updatedMemes);
+  };
 
-    // add data
-    const addMemes = async(title,description,videoUrl,posterUrl,tag)=>{
-        const response = await fetch(`${host}/api/memes/addmemes`, {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json',
-                'auth-token':localStorage.getItem('token')
-            },
-            body: JSON.stringify({title,description,videoUrl,posterUrl,tag})
-        })
-        const newMemes = await response.json();
-        setMemesData(memesData.concat(newMemes));
-    }
+  // delete data
+  const deleteMemes = async (id) => {
+    const response = await fetch(`${host}/api/memes/deletememes/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+    const remainingMemes = memesData.filter((memes) => {
+      return memes._id !== id;
+    });
+    setMemesData(remainingMemes);
+  };
 
-    // edit data 
-    const updateMemes = async(id,title,description,videoUrl,posterUrl,tag)=>{
-        const response = await fetch(`${host}/api/memes/updatememes/${id}`, {
-            method: 'PUT',
-            headers:{
-                'Content-Type': 'application/json',
-                'auth-token':localStorage.getItem('token')
-            },
-            body: JSON.stringify({title,description,videoUrl,posterUrl,tag})
+  const modeToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
-        })
-        const data = await response.json();
-        console.log(data);
+  if (isDarkMode) {
+    document.body.style.backgroundColor = "#181818";
+    document.body.style.color = "white";
+  } else {
+    document.body.style.backgroundColor = "#f9f9f9";
+    document.body.style.color = "black";
+  }
 
-        let updatedMemes = JSON.parse(JSON.stringify(memesData));
-        for(let index = 0; index<updatedMemes.length;index++){
-            let element = updatedMemes[index]
-            if(element._id=== id){
-                element.title = title;
-                element.description = description;
-                element.videoUrl = videoUrl;
-                element.posterUrl = posterUrl;
-                element.tag = tag;
-                break;
-            }
-        }
-        setMemesData(updatedMemes);
-    }
+  return (
+    <MemesContext.Provider
+      value={{
+        memesData,
+        isLoad,
+        errorMsg,
+        getData,
+        isDarkMode,
+        modeToggle,
+        deleteMemes,
+        addMemes,
+        updateMemes,
+      }}
+    >
+      {props.children}
+    </MemesContext.Provider>
+  );
+};
 
-    // delete data
-    const  deleteMemes = async(id)=>{
-        const response = await fetch(`${host}/api/memes/deletememes/${id}`, {
-            method: 'DELETE',
-            headers:{
-                'Content-Type': 'application/json',
-                'auth-token':localStorage.getItem('token')
-            }
-
-        })
-        const data = await response.json();
-        console.log(data);
-        const remainingMemes = memesData.filter((memes)=>{
-            return memes._id !== id
-        })
-        setMemesData(remainingMemes);
-
-    }
-
-
-    
-    const modeToggle =()=>{
-        setIsDarkMode(!isDarkMode)
-    }
-    useEffect(() => {
-      localStorage.setItem('darkMode',JSON.stringify(isDarkMode))
-    }, [isDarkMode])
-    
-    
-    if (isDarkMode) {
-        document.body.style.backgroundColor = "#181818";
-        document.body.style.color = "white";
-        
-      }else{
-        document.body.style.backgroundColor = "#f9f9f9";
-        document.body.style.color = "black";
-    }
-
-    return (
-        <MemesContext.Provider value={{ memesData, isLoad, errorMsg, getData,isDarkMode,modeToggle,deleteMemes,addMemes,updateMemes }}>
-            {props.children}
-        </MemesContext.Provider>
-    )
-
-}
-
-export default MemesState
+export default MemesState;
