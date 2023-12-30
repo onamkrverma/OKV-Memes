@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MemesContext from "./MemesContext";
 
 const MemesState = (props) => {
-  const host = "https://okv-memes-backend.vercel.app";
+  const host = process.env.REACT_APP_BACKEND_URL;
   const getDarkModeValue = () => {
     return JSON.parse(localStorage.getItem("darkMode")) || false;
   };

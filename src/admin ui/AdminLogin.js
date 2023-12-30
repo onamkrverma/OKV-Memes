@@ -5,7 +5,7 @@ const AdminLogin = () => {
   const context = useContext(MemesContext);
   const { isDarkMode } = context;
   const [credential, setCredential] = useState({ email: "", password: "" });
-  const host = "https://okv-memes-backend.vercel.app";
+  const host = process.env.REACT_APP_BACKEND_URL;
   let navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
