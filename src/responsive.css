@@ -1,169 +1,155 @@
-@media (max-width:426px) {
-    .navBar {
-        flex-direction: column;
-    }
+@media (max-width: 426px) {
+  .navBar {
+    flex-direction: column;
+  }
 
-    .logo img {
-        width: 35px;
-        height: auto;
-    }
+  .logo img {
+    width: 35px;
+    height: auto;
+  }
 
-    .navLinks,
-    .searchBox,
-    .darkModeBtn {
-        display: none;
-        margin: 10px 0;
-    }
+  .navLinks,
+  .searchBox,
+  .darkModeBtn {
+    display: none;
+    margin: 10px 0;
+  }
 
-    .navLinks li {
-        margin: 0;
-    }
+  .navLinks li {
+    margin: 0;
+  }
 
-    .searchBox {
-        width: 100%;
-    }
+  .searchBox {
+    width: 100%;
+  }
 
-    .searchBox input {
-        width: 65px;
-        transition: width 0.4s ease-in-out;
-        border: none;
-        border-bottom: 2px solid #6d909c;
-    }
+  .heroSection .searchBox input {
+    width: 100% !important;
+  }
 
-    .searchBox input:focus {
-        width: 100%;
-    }
+  .searchBox input {
+    width: 65px;
+    transition: width 0.4s ease-in-out;
+    border: none;
+    border-bottom: 2px solid #6d909c;
+  }
 
-    .searchBox span {
-        display: none;
-    }
+  .searchBox input:focus {
+    width: 100%;
+  }
 
-    .submitBtn {
-        background: transparent;
-        border: none;
-        border-bottom: 2px solid #6d909c;
-    }
+  .searchBox span {
+    display: none;
+  }
 
-    .menuBar {
-        display: block;
-    }
+  .submitBtn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #6d909c;
+  }
 
+  .menuBar {
+    display: block;
+  }
 
-    .heroImage {
-        width: 50%;
-    }
+  .heroSection {
+    width: 80%;
+  }
 
-    .heroImage img {
-        width: 100%;
-    }
+  .videoBox,
+  .results .videoBox {
+    width: 100%;
+    height: auto;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
 
-    .heroContent {
-        width: 70%;
-        margin-left: 5px;
-        z-index: 2;
-    }
+  .videoBox .poster {
+    height: auto;
+  }
 
-    .heroContent h1 {
-        font-size: 1.5rem;
-    }
+  .videoShortDetails {
+    margin: 5px;
+  }
 
-    .videoBox,
-    .results .videoBox {
-        width: 100%;
-        height: auto;
-        margin: 5px 0;
-        border-radius: 5px;
-    }
+  .memesContainer h3 {
+    font-size: 1rem;
+  }
 
-    .videoBox .poster {
-        height: auto;
-    }
+  /* memesDetails page */
+  .detailsContainer {
+    padding: 0;
+  }
 
-    .videoShortDetails {
-        margin: 5px;
+  .videoContainer {
+    width: 100%;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    z-index: 6;
+  }
 
-    }
+  .videoContainer video {
+    width: 100%;
+    height: auto;
+  }
 
+  .otherContent {
+    overflow: hidden;
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+  }
 
-    .memesContainer h3 {
-        font-size: 1rem;
-    }
+  .notFound img,
+  .pageNotFound img {
+    width: 80%;
+  }
 
-    /* memesDetails page */
-    .detailsContainer {
-        padding: 0;
-    }
+  /* admin section */
+  .card {
+    width: 45%;
+  }
 
-    .videoContainer {
-        width: 100%;
-        margin: 0;
-        position: sticky;
-        top: 0;
-        z-index: 6;
-    }
-
-    .videoContainer video {
-        width: 100%;
-        height: auto;
-    }
-
-    .otherContent {
-        overflow: hidden;
-        margin-top: 10px;
-        width: 100%;
-        height: auto;
-    }
-
-
-    .notFound img,
-    .pageNotFound img {
-        width: 80%;
-    }
-
-    /* admin section */
-    .card {
-        width: 45%;
-    }
-
-    .addMemesBox {
-        width: 85%;
-    }
-    
+  .addMemesBox {
+    width: 85%;
+  }
 }
 
 /* for tablet view */
-@media ((min-width:427px) and (max-width:769px)) {
-    .otherContent {
-        width: 100%;
-        overflow-y: scroll;
-        height: 300px;
-    }
+@media ((min-width: 427px) and (max-width:769px)) {
+  .otherContent {
+    width: 100%;
+    overflow-y: scroll;
+    height: 300px;
+  }
 
-    .videoBox {
-        width: 230px;
-        height: 212px;
-    }
+  .videoBox {
+    width: 230px;
+    height: 212px;
+  }
 
-    .searchBox {
-        width: 45%;
-    }
+  .searchBox {
+    width: 45%;
+  }
 
-    .searchBox span {
-        right: 16%;
-    }
+  .searchBox span {
+    right: 16%;
+  }
 }
 
 /* for both mobile and tablet */
-@media((max-width:769px)){
-    .mainContent,.updateBox{
-        width: 100%;
-    }
+@media ((max-width: 769px)) {
+  .mainContent,
+  .updateBox {
+    width: 100%;
+  }
 }
 
 /* for only laptop scree */
-@media((min-width:769px)){
-    .showAllContents {
-        height: 500px;
-        overflow-y: scroll;
-    }
+@media ((min-width: 769px)) {
+  .showAllContents {
+    height: 500px;
+    overflow-y: scroll;
+  }
 }
